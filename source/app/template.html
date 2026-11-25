@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ידיעת הארץ: החידון של המילואים</title>
+<meta name="description" content="חידון ידיעת הארץ: היסטוריה, גיאוגרפיה, תנ״ך, מנהיגים, ציונות וידע עולם. 310 שאלות, עם קצת צחוקים בדרך.">
+<meta name="theme-color" content="#121E14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ידיעת הארץ">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<style>
+/*__FONTS__*/
+:root {
+  --bg: #18261A;
+  --scrim: rgba(10,18,12,0.72);
+  --text: #EEF3E2;
+  --sub: #DCE6CB;
+  --bone: #E6EED4;
+  --ink: #16231A;
+  --red: #FF5533;
+  --red-soft: #FF8A70;
+  --green: #9BE38A;
+  --line: rgba(230,238,212,0.5);
+  --display: "Rubik Dirt", "Secular One", sans-serif;
+  --body: "Secular One", "Arial Hebrew", sans-serif;
+  --gap: clamp(8px, 1.6vh, 14px);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--scrim), var(--scrim)), url("/*__TOPO__*/");
+  background-size: cover, 390px 844px;
+  background-position: center, center top;
+  color: var(--text);
+  font-family: var(--body);
+  font-weight: 400;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; cursor: pointer; font-weight: 400; }
+a { color: var(--bone); }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+.glass {
+  background: linear-gradient(135deg, rgba(26,42,29,0.96), rgba(12,22,15,0.94));
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid rgba(230,238,212,0.5);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.35), 0 12px 28px rgba(0,0,0,0.5);
+}
+
+.screen {
+  display: none;
+  height: 100vh; height: 100dvh;
+  max-width: 480px; margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top)) 20px max(16px, env(safe-area-inset-bottom));
+  flex-direction: column; gap: var(--gap);
+  position: relative; overflow-y: auto;
+}
+.screen.active { display: flex; }
+
+/* hexagon button (topics / exit) */
+.hex { position: relative; width: 50px; height: 56px; padding: 0; border: 0; background: none; display: grid; place-items: center; flex: none; }
+.hex svg.shape { position: absolute; inset: 0; }
+.hex svg.icon { position: relative; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex: none; }
+.pill { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 18px; font-size: 14px; }
+.dot { width: 8px; height: 8px; border-radius: 4px; background: var(--green); box-shadow: 0 0 8px var(--green); }
+
+/* home */
+.hero { position: relative; flex: none; }
+.hero h1 { margin: 0; font: 400 clamp(46px, 8.2vh, 70px)/0.92 var(--display); }
+.hero p { margin: 6px 0 0; font-size: clamp(15px, 2.1vh, 18px); color: var(--bone); }
+.here { position: absolute; left: 4px; top: 8px; width: 120px; height: 76px; pointer-events: none; }
+.here .ring { position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 17px; border: 2px solid var(--red); box-shadow: 0 0 18px rgba(255,85,51,0.8); }
+.here .core { position: absolute; left: 12px; top: 12px; width: 10px; height: 10px; border-radius: 5px; background: var(--red); }
+.here .leg { position: absolute; left: 30px; top: 30px; width: 30px; height: 1px; background: var(--red); transform: rotate(35deg); transform-origin: 0 0; }
+.here .tag { position: absolute; left: 50px; top: 44px; padding: 3px 8px; border: 1px solid rgba(255,85,51,0.7); background: rgba(14,24,16,0.85); font-size: 12px; color: #FFB3A3; white-space: nowrap; }
+
+.cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; flex: none;
+  padding: clamp(12px, 1.9vh, 16px) 18px clamp(12px, 1.9vh, 16px) 12px;
+  border: 0; border-radius: 28px; background: var(--bone); color: var(--ink); text-align: right;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.45), inset 0 -3px 0 rgba(0,0,0,0.12);
+}
+.cta .t { display: block; font: 400 clamp(24px, 3.6vh, 30px)/1 var(--display); }
+.cta .s { display: block; font-size: 14px; color: #3A4A33; margin-top: 4px; }
+.cta .go { flex: none; width: clamp(44px, 6.4vh, 54px); height: clamp(44px, 6.4vh, 54px); border-radius: 50%; background: var(--ink); color: var(--bone); display: grid; place-items: center; }
+.cta:active { transform: translateY(1px); }
+
+.label { font-size: 15px; color: var(--bone); flex: none; }
+
+.route { position: relative; display: flex; flex-direction: column; gap: clamp(6px, 1.2vh, 10px); padding-right: 30px; flex: none; }
+.route::before { content: ""; position: absolute; right: 10px; top: 20px; bottom: 20px; border-right: 2px dashed var(--line); }
+.stop { position: relative; }
+.stop .pin { position: absolute; right: -29px; top: 50%; margin-top: -8px; width: 16px; height: 16px; border-radius: 8px; border: 2px solid var(--bone); background: var(--bg); }
+.stop:first-child .pin { border-color: var(--red); box-shadow: 0 0 12px rgba(255,85,51,0.7); }
+.mode { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: clamp(46px, 6.6vh, 56px); padding: 6px 16px; border-radius: 18px; text-align: right; color: var(--text); }
+.mode .n { display: block; font-size: 18px; line-height: 1.2; }
+.mode .d { display: block; font-size: 13px; color: var(--sub); }
+.mode .c { font: 400 26px var(--display); color: var(--red-soft); }
+.mode:disabled { opacity: .45; cursor: default; }
+
+.stats { margin-top: auto; padding: 10px 14px; border-radius: 14px; display: flex; flex-direction: column; gap: 7px; flex: none; font-size: 13px; }
+.stats .row { display: flex; justify-content: space-between; }
+.bar { height: 4px; border-radius: 2px; background: rgba(255,255,255,0.15); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--bone); border-radius: 2px; }
+
+/* quiz */
+.counter { font: 400 clamp(22px, 3.2vh, 26px) var(--display); }
+.track { position: relative; height: 44px; flex: none; }
+.track .dash { position: absolute; right: 6px; left: 42px; top: 21px; border-top: 2px dashed var(--line); }
+.track .fill { position: absolute; right: 6px; top: 20px; height: 4px; border-radius: 2px; background: var(--bone); transition: width .4s ease; }
+.track .start { position: absolute; right: 0; top: 16px; width: 12px; height: 12px; border-radius: 6px; background: var(--bone); }
+.track .tick { position: absolute; top: 18px; width: 8px; height: 8px; margin-right: -4px; border-radius: 4px; background: rgba(230,238,212,0.35); }
+.track .tick.done { background: var(--bone); }
+.track .home { position: absolute; left: 0; top: 4px; width: 36px; height: 36px; border-radius: 18px; display: grid; place-items: center; color: var(--red); }
+.track .me { position: absolute; top: 7px; width: 30px; height: 30px; margin-right: -15px; border-radius: 15px; border: 2px solid var(--red); background: #0E1A10; box-shadow: 0 0 18px rgba(255,85,51,0.85); display: grid; place-items: center; transition: right .4s ease; }
+.track .me i { width: 10px; height: 10px; border-radius: 5px; background: var(--red); }
+.caption { font-size: 13px; color: var(--sub); margin-top: calc(var(--gap) * -0.6); flex: none; }
+
+.qcard { padding: clamp(12px, 1.9vh, 16px) 18px; border-radius: 20px; background: #EEF3E2; color: var(--ink); box-shadow: 0 16px 34px rgba(0,0,0,0.55); flex: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.chip { padding: 2px 10px; border-radius: 999px; font-size: 12px; background: rgba(22,35,26,0.12); }
+.chip.red { background: var(--red); color: #fff; }
+.qtext { margin: 0; font: 400 clamp(19px, 2.8vh, 23px)/1.3 var(--body); }
+
+.options { display: flex; flex-direction: column; gap: 8px; flex: none; }
+.opt {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  min-height: clamp(44px, 6vh, 50px); padding: 8px 16px; border-radius: 16px;
+  color: var(--text); font-size: 17px; line-height: 1.3; text-align: right;
+  transition: background-color .15s, opacity .2s, max-height .3s ease, min-height .3s ease, padding .3s ease, margin .3s ease;
+  max-height: 120px; overflow: hidden;
+}
+.opt svg { flex: none; }
+.opt.right { background: var(--green); border-color: var(--green); color: #10200F; }
+.opt.wrong { background: var(--red); border-color: var(--red); color: #fff; box-shadow: 0 10px 24px rgba(255,85,51,0.35); }
+.opt.punch { background: var(--bone); color: var(--ink); }
+.opt.gone { max-height: 0; min-height: 0; padding-top: 0; padding-bottom: 0; margin-top: -8px; opacity: 0; border-width: 0; }
+.opt:disabled { cursor: default; }
+
+.feedback { padding: 12px 16px; border-radius: 18px; flex: 0 1 auto; min-height: 0; overflow-y: auto; }
+.feedback h3 { margin: 0 0 4px; font: 400 clamp(22px, 3.2vh, 27px)/1.1 var(--display); }
+.feedback h3.good { color: var(--green); }
+.feedback h3.bad { color: var(--red-soft); }
+.feedback h3.lol { color: var(--bone); }
+.feedback p { margin: 0; font-size: 15px; line-height: 1.45; color: var(--sub); }
+.feedback a { font-size: 13px; }
+.show { animation: rise .25s ease; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.next { margin-top: auto; flex: none; display: flex; align-items: center; justify-content: center; gap: 10px; height: clamp(50px, 7vh, 58px); border: 0; border-radius: 28px; background: var(--bone); color: var(--ink); font: 400 clamp(22px, 3.2vh, 26px) var(--display); box-shadow: 0 14px 30px rgba(0,0,0,0.45), inset 0 -3px 0 rgba(0,0,0,0.12); }
+
+/* results */
+.score { margin-top: clamp(8px, 4vh, 40px); font: 400 clamp(96px, 17vh, 150px)/0.9 var(--display); direction: ltr; text-align: right; flex: none; }
+.score small { font-size: .4em; color: var(--sub); }
+.verdict { margin: 0; font-size: clamp(19px, 2.8vh, 23px); flex: none; }
+.sub { margin: 0; color: var(--sub); flex: none; }
+.breakdown { list-style: none; margin: 0; padding: 4px 16px; border-radius: 18px; flex: 0 1 auto; overflow-y: auto; min-height: 0; }
+.breakdown li { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(230,238,212,0.2); }
+.breakdown li:last-child { border-bottom: 0; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: none; }
+.ghost { height: 50px; border-radius: 18px; font-size: 16px; }
+
+/* topics sheet */
+.sheet-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 10; }
+.sheet { position: fixed; left: 50%; bottom: 0; transform: translateX(-50%); width: 100%; max-width: 480px; max-height: 86dvh; overflow-y: auto; z-index: 11; padding: 18px 20px max(20px, env(safe-area-inset-bottom)); border-radius: 26px 26px 0 0; animation: up .25s ease; }
+@keyframes up { from { transform: translate(-50%, 30px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.sheet-head h2 { margin: 0; font: 400 30px var(--display); }
+.close { width: 44px; height: 44px; border-radius: 22px; display: grid; place-items: center; }
+.topic { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 12px 2px; border: 0; border-bottom: 1px solid rgba(230,238,212,0.2); background: none; text-align: right; }
+.topic .n { display: block; font-size: 18px; }
+.topic .d { display: block; font-size: 13px; color: var(--sub); }
+.topic .c { font: 400 24px var(--display); color: var(--red-soft); }
+.sheet-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 14px; font-size: 14px; }
+.link { background: none; border: 0; padding: 6px 0; text-decoration: underline; color: var(--sub); }
+
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); padding: 10px 16px; border-radius: 99px; background: var(--bone); color: var(--ink); font-size: 14px; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 20; white-space: nowrap; }
+.toast.on { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<section class="screen active" id="home">
+  <div class="topbar">
+    <span class="pill glass"><span class="dot"></span>המערכת מוכנה</span>
+    <button class="hex" id="topicsBtn" aria-label="נושאים">
+      <svg class="shape" aria-hidden="true" width="50" height="56" viewBox="0 0 52 58"><path d="M26 2 L49 15 L49 43 L26 56 L3 43 L3 15 Z" fill="rgba(14,24,16,0.9)" stroke="rgba(230,238,212,0.7)" stroke-width="1.4"/></svg>
+      <svg class="icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
+    </button>
+  </div>
+
+  <div class="hero">
+    <div class="here" aria-hidden="true"><span class="ring"></span><span class="core"></span><span class="leg"></span><span class="tag">אתה כאן. בערך.</span></div>
+    <h1>ידיעת<br>הארץ</h1>
+    <p><span id="totalCount">310</span> שאלות. 6 נושאים. 0 תירוצים.</p>
+  </div>
+
+  <button class="cta" id="quickBtn">
+    <span><span class="t">יאללה, עולים על זה</span><span class="s">סבב של 10 שאלות, מהקל לקשה</span></span>
+    <span class="go" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span>
+  </button>
+
+  <span class="label">או לבחור משחק אחר:</span>
+  <div class="route">
+    <div class="stop"><span class="pin"></span><button class="mode glass" id="funBtn"><span><span class="n">רק צחוקים</span><span class="d">רק השאלות המצחיקות</span></span><span class="c" id="funCount"></span></button></div>
+    <div class="stop"><span class="pin"></span><button class="mode glass" id="allBtn"><span><span class="n">כל ה-<span class="allN"></span> בבלגן</span><span class="d">כל השאלות, בסדר אקראי</span></span><span class="c allN"></span></button></div>
+    <div class="stop"><span class="pin"></span><button class="mode glass" id="hardBtn"><span><span class="n">רק קשות</span><span class="d">למי שבטוח בעצמו</span></span><span class="c" id="hardCount"></span></button></div>
+    <div class="stop"><span class="pin"></span><button class="mode glass" id="mistakesBtn"><span><span class="n">תיקון טעויות</span><span class="d" id="mistakesMeta">השאלות שטעית בהן</span></span><span class="c" id="mistakesCount"></span></button></div>
+  </div>
+
+  <div class="stats glass">
+    <div class="row"><span id="statsA">עוד לא התחלת</span><span id="statsB" style="color: var(--sub)"></span></div>
+    <div class="bar"><i id="statsBar" style="width: 0%"></i></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="screen" id="quiz" aria-live="polite">
+  <div class="topbar">
+    <button class="hex" id="quitBtn" aria-label="יציאה לתפריט">
+      <svg class="shape" aria-hidden="true" width="50" height="56" viewBox="0 0 52 58"><path d="M26 2 L49 15 L49 43 L26 56 L3 43 L3 15 Z" fill="rgba(14,24,16,0.9)" stroke="rgba(230,238,212,0.7)" stroke-width="1.4"/></svg>
+      <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+    <span class="counter" id="counter"></span>
+    <span class="pill glass" id="scorePill">0 נכונות</span>
+  </div>
+
+  <div class="track" aria-hidden="true">
+    <span class="dash"></span><span class="fill" id="fill"></span><span class="start"></span>
+    <span id="ticks"></span>
+    <span class="home glass"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></span>
+    <span class="me" id="me"><i></i></span>
+  </div>
+  <span class="caption" id="caption"></span>
+
+  <div class="qcard">
+    <div class="chips" id="chips"></div>
+    <h2 class="qtext" id="qtext"></h2>
+  </div>
+  <div class="options" id="options"></div>
+
+  <div class="feedback glass" id="feedback" hidden>
+    <h3 id="fbTitle"></h3>
+    <p><span id="fbText"></span> <a id="fbSrc" target="_blank" rel="noopener">למקור</a></p>
+  </div>
+  <button class="next" id="nextBtn" hidden><span id="nextLabel">לשאלה הבאה</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+</section>
+
+<!-- RESULTS -->
+<section class="screen" id="results">
+  <div class="score" id="scoreBig"></div>
+  <p class="verdict" id="verdict"></p>
+  <p class="sub" id="scoreSub"></p>
+  <ul class="breakdown glass" id="breakdown"></ul>
+  <button class="cta" id="againBtn" style="margin-top: auto">
+    <span><span class="t">עוד סבב</span><span class="s">אותו סוג משחק, שאלות אחרות</span></span>
+    <span class="go" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span>
+  </button>
+  <div class="row2">
+    <button class="ghost glass" id="shareBtn">לשתף בקבוצה</button>
+    <button class="ghost glass" id="homeBtn">לתפריט</button>
+  </div>
+</section>
+
+<!-- TOPICS SHEET -->
+<div class="sheet-bg" id="sheetBg" hidden></div>
+<div class="sheet glass" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <div class="sheet-head">
+    <h2 id="sheetTitle">נושאים</h2>
+    <button class="close glass" id="sheetClose" aria-label="סגירה"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+  </div>
+  <div id="topicList"></div>
+  <div class="sheet-foot">
+    <button class="link" id="installBtn" hidden>להתקין כאפליקציה</button>
+    <span id="iosTip" hidden>להתקנה: שיתוף בספארי, ואז ״הוספה למסך הבית״</span>
+    <button class="link" id="resetBtn">איפוס ההתקדמות</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const QUESTIONS = /*__QUESTIONS__*/[];
+
+const CATS = { history: "היסטוריה", geography: "גיאוגרפיה", tanakh: "תנ״ך", leaders: "נשיאים וראשי ממשלה", zionism: "ציונות", world: "העולם" };
+const DIFF = { 1: "קלה", 2: "בינונית", 3: "קשה" };
+const RIGHT = ["בול.", "נכון מאוד.", "יפה, צדקת.", "תותח.", "בדיוק.", "ידעת. כל הכבוד.", "נכון. מגיע לך חמשוש.", "יפה. הרס״ר מרוצה."];
+const WRONG = ["טעית. 20 שכיבות סמיכה.", "לא בדיוק.", "פספוס.", "קרוב, אבל לא.", "לא הפעם.", "טעית. קורה גם לטובים.", "לא. אבל עכשיו אתה יודע."];
+
+// ---------- progress saved on this phone ----------
+const STORE_KEY = "yediat-haaretz-v1";
+function loadStore() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || { q: {}, rounds: 0 }; } catch (e) { return { q: {}, rounds: 0 }; } }
+function saveStore() { try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) {} }
+let store = loadStore();
+const stat = (id) => store.q[id] || { seen: 0, right: 0, lastWrong: false };
+
+// ---------- helpers ----------
+const $ = (id) => document.getElementById(id);
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+const pick = (a) => a[Math.floor(Math.random() * a.length)];
+function show(id) { document.querySelectorAll(".screen").forEach(s => s.classList.toggle("active", s.id === id)); }
+function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("on"), 2400); }
+const freshFirst = (pool) => shuffle(pool).sort((a, b) => stat(a.id).seen - stat(b.id).seen);
+const byDiff = (a, b) => (a.difficulty || 2) - (b.difficulty || 2);
+const pools = {
+  fun: () => QUESTIONS.filter(q => q.funny || q.joke),
+  hard: () => QUESTIONS.filter(q => q.difficulty === 3 && !q.joke),
+  mistakes: () => QUESTIONS.filter(q => stat(q.id).lastWrong)
+};
+
+// ---------- rounds ----------
+let round = null, lastMode = null;
+
+function buildRound(mode) {
+  let chosen;
+  if (mode.type === "quick") {
+    const by = d => freshFirst(QUESTIONS.filter(q => (q.difficulty || 2) === d));
+    chosen = [...by(1).slice(0, 3), ...by(2).slice(0, 4), ...by(3).slice(0, 3)].sort(byDiff);
+  } else if (mode.type === "all") {
+    chosen = shuffle(QUESTIONS);
+  } else if (mode.type === "cat") {
+    chosen = freshFirst(QUESTIONS.filter(q => q.cat === mode.cat)).slice(0, 10).sort(byDiff);
+  } else {
+    chosen = freshFirst(pools[mode.type]()).slice(0, 10).sort(byDiff);
+  }
+  return chosen.map(q => ({ q, order: shuffle([0, 1, 2, 3].slice(0, q.options.length)), picked: null }));
+}
+
+function startRound(mode) {
+  closeSheet();
+  const items = buildRound(mode);
+  if (!items.length) { toast(mode.type === "mistakes" ? "אין טעויות לתקן. יפה לך." : "אין פה שאלות עדיין."); return; }
+  lastMode = mode;
+  round = { mode, items, i: 0, score: 0, scored: 0 };
+  buildTicks();
+  show("quiz");
+  renderQuestion();
+}
+
+function buildTicks() {
+  const n = round.items.length, box = $("ticks");
+  box.innerHTML = "";
+  if (n > 12) return;
+  for (let k = 1; k < n; k++) {
+    const t = document.createElement("span");
+    t.className = "tick"; t.dataset.k = k;
+    t.style.right = "calc(6px + (100% - 48px) * " + (k / n) + ")";
+    box.appendChild(t);
+  }
+}
+
+function setProgress(doneCount) {
+  const n = round.items.length, f = doneCount / n;
+  $("fill").style.width = "calc((100% - 48px) * " + f + ")";
+  $("me").style.right = "calc(6px + (100% - 48px) * " + f + ")";
+  document.querySelectorAll("#ticks .tick").forEach(t => t.classList.toggle("done", Number(t.dataset.k) <= doneCount));
+  const left = n - doneCount;
+  $("caption").textContent = left <= 0 ? "הגעת הביתה." : left === 1 ? "שאלה אחרונה ואתה בבית" : "עוד " + left + " שאלות הביתה";
+}
+
+function renderQuestion() {
+  const it = round.items[round.i], q = it.q, n = round.items.length;
+  $("counter").textContent = "שאלה " + (round.i + 1) + " מתוך " + n;
+  $("scorePill").textContent = round.score + " נכונות";
+  setProgress(round.i);
+
+  const chips = $("chips"); chips.innerHTML = "";
+  const chip = (txt, cls) => { const s = document.createElement("span"); s.className = "chip" + (cls ? " " + cls : ""); s.textContent = txt; chips.appendChild(s); };
+  chip(CATS[q.cat] || q.cat);
+  if (q.joke) chip("בדיחה, לא נספר בניקוד", "red");
+  else { chip(DIFF[q.difficulty] || "בינונית"); if (q.funny) chip("עם חיוך", "red"); }
+
+  $("qtext").textContent = q.q;
+  const box = $("options"); box.innerHTML = "";
+  it.order.forEach(idx => {
+    const b = document.createElement("button");
+    b.className = "opt glass"; b.dataset.idx = idx;
+    const span = document.createElement("span"); span.textContent = q.options[idx];
+    b.appendChild(span);
+    b.addEventListener("click", () => answer(idx));
+    box.appendChild(b);
+  });
+  $("feedback").hidden = true;
+  $("nextBtn").hidden = true;
+}
+
+const CHECK = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+const CROSS = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
+
+function answer(idx) {
+  const it = round.items[round.i];
+  if (it.picked !== null) return;
+  it.picked = idx;
+  const q = it.q, correct = idx === q.answer;
+
+  document.querySelectorAll("#options .opt").forEach(b => {
+    const bi = Number(b.dataset.idx);
+    b.disabled = true;
+    if (bi === q.answer) { b.classList.remove("glass"); b.classList.add(q.joke ? "punch" : "right"); if (!q.joke) b.insertAdjacentHTML("beforeend", CHECK); }
+    else if (bi === idx) { b.classList.remove("glass"); b.classList.add("wrong"); b.insertAdjacentHTML("beforeend", CROSS); }
+    else b.classList.add("gone");
+  });
+
+  const s = stat(q.id); s.seen++;
+  const h = $("fbTitle");
+  if (q.joke) { h.className = "lol"; h.textContent = correct ? "הבנת את הבדיחה." : "הפאנץ׳ מסומן."; }
+  else {
+    round.scored++; if (correct) round.score++;
+    if (correct) s.right++;
+    s.lastWrong = !correct;
+    h.className = correct ? "good" : "bad";
+    h.textContent = pick(correct ? RIGHT : WRONG);
+  }
+  store.q[q.id] = s; saveStore();
+
+  $("scorePill").textContent = round.score + " נכונות";
+  $("fbText").textContent = q.explain || "";
+  const src = $("fbSrc");
+  if (q.source) { src.href = q.source; src.hidden = false; } else src.hidden = true;
+  const fb = $("feedback"); fb.hidden = false; fb.scrollTop = 0;
+  fb.classList.remove("show"); void fb.offsetWidth; fb.classList.add("show");
+
+  const last = round.i === round.items.length - 1;
+  $("nextLabel").textContent = last ? "לתוצאות" : "לשאלה הבאה";
+  $("nextBtn").hidden = false;
+  setProgress(round.i + 1);
+  $("nextBtn").focus({ preventScroll: true });
+}
+
+function next() {
+  if (round.i < round.items.length - 1) { round.i++; renderQuestion(); }
+  else finish();
+}
+
+// ---------- results ----------
+function verdictFor(p) {
+  if (p === 1) return "מושלם. מגיעה לך יציאה הביתה.";
+  if (p >= .8) return "רמה של קצין חינוך.";
+  if (p >= .6) return "יפה. עוד כמה סבבים ואתה מדריך טיולים.";
+  if (p >= .4) return "סביר. יש מה לשפר.";
+  if (p > 0) return "נגיד שזה נשאר בינינו.";
+  return "אפס. לפחות היית עקבי.";
+}
+
+function finish() {
+  store.rounds = (store.rounds || 0) + 1; saveStore();
+  const { score, scored, items } = round;
+  $("scoreBig").innerHTML = score + "<small>/" + scored + "</small>";
+  $("verdict").textContent = scored ? verdictFor(score / scored) : "רק בדיחות הפעם. אין ניקוד, יש מצב רוח.";
+  const answered = items.filter(x => x.picked !== null);
+  const jokes = answered.filter(x => x.q.joke).length;
+  $("scoreSub").textContent = jokes ? "ועוד " + jokes + " בדיחות שלא נספרו." : "";
+  const per = {};
+  answered.forEach(x => { if (x.q.joke) return; const c = x.q.cat; per[c] = per[c] || [0, 0]; per[c][1]++; if (x.picked === x.q.answer) per[c][0]++; });
+  const ul = $("breakdown"); ul.innerHTML = "";
+  Object.keys(per).forEach(c => {
+    const li = document.createElement("li");
+    const a = document.createElement("span"); a.textContent = CATS[c] || c;
+    const b = document.createElement("span"); b.textContent = per[c][0] + " מתוך " + per[c][1];
+    li.append(a, b); ul.appendChild(li);
+  });
+  ul.hidden = !Object.keys(per).length;
+  show("results");
+}
+
+async function share() {
+  const text = "עשיתי " + round.score + " מתוך " + round.scored + " בחידון ידיעת הארץ של המילואים. בוא נראה אותך:";
+  const url = location.href.split("#")[0];
+  try { if (navigator.share) { await navigator.share({ title: "ידיעת הארץ", text, url }); return; } } catch (e) { return; }
+  try { await navigator.clipboard.writeText(text + " " + url); toast("הועתק. אפשר להדביק בקבוצה."); } catch (e) { toast("לא הצלחתי להעתיק."); }
+}
+
+// quitting a long round in the middle still shows what you did so far
+function quit() {
+  if (round && round.items.some(x => x.picked !== null) && round.mode.type === "all") {
+    round.items = round.items.filter(x => x.picked !== null); finish();
+  } else { renderHome(); show("home"); }
+}
+
+// ---------- home and topics ----------
+function renderHome() {
+  const total = QUESTIONS.length;
+  $("totalCount").textContent = total;
+  document.querySelectorAll(".allN").forEach(e => e.textContent = total);
+  $("funCount").textContent = pools.fun().length;
+  $("hardCount").textContent = pools.hard().length;
+  const m = pools.mistakes().length;
+  $("mistakesCount").textContent = m || "";
+  $("mistakesMeta").textContent = m ? "השאלות שטעית בהן" : "אין כרגע. יפה לך.";
+  $("mistakesBtn").disabled = !m;
+
+  const seen = QUESTIONS.filter(q => !q.joke && stat(q.id).seen);
+  const acc = seen.length ? Math.round(seen.reduce((s, q) => s + stat(q.id).right / stat(q.id).seen, 0) / seen.length * 100) : 0;
+  $("statsA").textContent = seen.length ? "ענית על " + seen.length + " מתוך " + total : "עוד לא התחלת. זה הזמן.";
+  $("statsB").textContent = seen.length ? "דיוק " + acc + "%" : "";
+  $("statsBar").style.width = Math.round(seen.length / total * 100) + "%";
+}
+
+function renderTopics() {
+  const list = $("topicList"); list.innerHTML = "";
+  Object.keys(CATS).forEach(c => {
+    const qs = QUESTIONS.filter(q => q.cat === c);
+    if (!qs.length) return;
+    const real = qs.filter(q => !q.joke), seen = real.filter(q => stat(q.id).seen);
+    const pct = seen.length ? Math.round(seen.reduce((s, q) => s + stat(q.id).right / stat(q.id).seen, 0) / seen.length * 100) : 0;
+    const b = document.createElement("button");
+    b.className = "topic";
+    b.innerHTML = '<span><span class="n"></span><span class="d"></span></span><span class="c"></span>';
+    b.querySelector(".n").textContent = CATS[c];
+    b.querySelector(".d").textContent = seen.length ? "ענית על " + seen.length + ", " + pct + "% הצלחה" : "עוד לא התחלת";
+    b.querySelector(".c").textContent = qs.length;
+    b.addEventListener("click", () => startRound({ type: "cat", cat: c }));
+    list.appendChild(b);
+  });
+}
+function openSheet() { renderTopics(); $("sheetBg").hidden = false; $("sheet").hidden = false; $("sheetClose").focus(); }
+function closeSheet() { $("sheetBg").hidden = true; $("sheet").hidden = true; }
+
+$("quickBtn").onclick = () => startRound({ type: "quick" });
+$("funBtn").onclick = () => startRound({ type: "fun" });
+$("allBtn").onclick = () => startRound({ type: "all" });
+$("hardBtn").onclick = () => startRound({ type: "hard" });
+$("mistakesBtn").onclick = () => startRound({ type: "mistakes" });
+$("topicsBtn").onclick = openSheet;
+$("sheetClose").onclick = closeSheet;
+$("sheetBg").onclick = closeSheet;
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("sheet").hidden) closeSheet(); });
+$("nextBtn").onclick = next;
+$("quitBtn").onclick = quit;
+$("homeBtn").onclick = () => { renderHome(); show("home"); };
+$("againBtn").onclick = () => startRound(lastMode || { type: "quick" });
+$("shareBtn").onclick = share;
+$("resetBtn").onclick = () => {
+  if (confirm("למחוק את כל ההתקדמות בטלפון הזה?")) { store = { q: {}, rounds: 0 }; saveStore(); renderHome(); renderTopics(); toast("ההתקדמות אופסה."); }
+};
+
+// install as an app
+(function () {
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (standalone) return;
+  if (/iphone|ipad|ipod/i.test(navigator.userAgent)) $("iosTip").hidden = false;
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault();
+    $("installBtn").hidden = false;
+    $("installBtn").onclick = () => { e.prompt(); $("installBtn").hidden = true; };
+  });
+})();
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+
+renderHome();
+</script>
+</body>
+</html>
