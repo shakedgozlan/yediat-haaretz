@@ -1,6 +1,6 @@
 // Offline support: keeps the quiz working without reception (e.g. on base).
 // When you publish new questions, raise the version number so phones pick up the update.
-const VERSION = "v3";
+const VERSION = "v4";
 const CACHE = "yediat-haaretz-" + VERSION;
 const CORE = ["./", "index.html", "manifest.json", "icon-192.png", "icon-512.png", "icon-maskable-512.png"];
 

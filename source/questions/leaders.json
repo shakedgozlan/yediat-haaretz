@@ -31,7 +31,7 @@
     "difficulty": 1,
     "funny": false,
     "joke": false,
-    "source": "https://he.wikipedia.org/wiki/גולדה_מאיר"
+    "source": "https://en.wikipedia.org/wiki/Golda_Meir"
   },
   {
     "id": "lead-003",
@@ -99,7 +99,7 @@
     "difficulty": 1,
     "funny": false,
     "joke": false,
-    "source": "https://he.wikipedia.org/wiki/יצחק_רבין"
+    "source": "https://en.wikipedia.org/wiki/Yitzhak_Rabin"
   },
   {
     "id": "lead-007",
@@ -116,7 +116,7 @@
     "difficulty": 1,
     "funny": false,
     "joke": false,
-    "source": "https://www.gov.il/apps/pmo/history/historyPrimeMinisters.html"
+    "source": "https://en.wikipedia.org/wiki/Likud"
   },
   {
     "id": "lead-008",
@@ -150,7 +150,7 @@
     "difficulty": 1,
     "funny": false,
     "joke": false,
-    "source": "https://catalog.archives.gov.il/site/chapter/intro/"
+    "source": "https://en.wikipedia.org/wiki/Israel%E2%80%93Jordan_peace_treaty"
   },
   {
     "id": "lead-010",
@@ -167,7 +167,7 @@
     "difficulty": 1,
     "funny": false,
     "joke": false,
-    "source": "https://he.wikipedia.org/wiki/ראובן_ריבלין"
+    "source": "https://en.wikipedia.org/wiki/Reuven_Rivlin"
   },
   {
     "id": "lead-011",
@@ -201,7 +201,7 @@
     "difficulty": 1,
     "funny": false,
     "joke": false,
-    "source": "https://en.wikipedia.org/wiki/Nechemya_Cohen"
+    "source": "https://en.wikipedia.org/wiki/Ehud_Barak"
   },
   {
     "id": "lead-013",
@@ -286,7 +286,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://www.gov.il/apps/pmo/history/historyPrimeMinisters.html"
+    "source": "https://en.wikipedia.org/wiki/Moshe_Sharett"
   },
   {
     "id": "lead-018",
@@ -337,7 +337,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://he.wikipedia.org/wiki/יצחק_שמיר"
+    "source": "https://en.wikipedia.org/wiki/Yitzhak_Shamir"
   },
   {
     "id": "lead-021",
@@ -354,7 +354,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://www.gov.il/apps/pmo/history/historyGovernments.html"
+    "source": "https://en.wikipedia.org/wiki/1984_Israeli_legislative_election"
   },
   {
     "id": "lead-022",
@@ -371,7 +371,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://www.bbc.com/news/world-middle-east-49043102"
+    "source": "https://en.wikipedia.org/wiki/Benjamin_Netanyahu"
   },
   {
     "id": "lead-023",
@@ -388,7 +388,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://archives.mod.gov.il/Exhib/ArielSharon/Pages/default.aspx"
+    "source": "https://en.wikipedia.org/wiki/Kadima"
   },
   {
     "id": "lead-024",
@@ -405,7 +405,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://www.gov.il/apps/pmo/history/historyGovernments.html"
+    "source": "https://en.wikipedia.org/wiki/Ehud_Olmert"
   },
   {
     "id": "lead-025",
@@ -456,7 +456,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://he.wikipedia.org/wiki/נפתלי_בנט"
+    "source": "https://en.wikipedia.org/wiki/Thirty-sixth_government_of_Israel"
   },
   {
     "id": "lead-028",
@@ -490,7 +490,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://main.knesset.gov.il/Activity/Info/mmm/Documents/Elections_21_Spotlight.pdf"
+    "source": "https://en.wikipedia.org/wiki/2001_Israeli_prime_ministerial_election"
   },
   {
     "id": "lead-030",
@@ -512,7 +512,7 @@
   {
     "id": "lead-031",
     "cat": "leaders",
-    "q": "איזה נשיא היה ביופיזיקאי במכון ויצמן והמפקד הראשון של חיל המדע בצה\"ל?",
+    "q": "איזה נשיא היה ביופיזיקאי במכון ויצמן ועמד בראש חיל המדע של צה\"ל?",
     "options": [
       "חיים ויצמן",
       "זלמן שזר",
@@ -524,7 +524,7 @@
     "difficulty": 2,
     "funny": false,
     "joke": false,
-    "source": "https://he.wikipedia.org/wiki/אפרים_קציר"
+    "source": "https://wis-wander.weizmann.ac.il/node/1659"
   },
   {
     "id": "lead-032",
@@ -597,19 +597,19 @@
   {
     "id": "lead-036",
     "cat": "leaders",
-    "q": "כשמנחם בגין התפטר ב-1983, התגלה פרט מפתיע. מה?",
+    "q": "אחרי שהתפטר ב-1983, מנחם בגין כמעט לא יצא מדירתו בירושלים. לאן בכל זאת יצא?",
     "options": [
-      "המפתחות למשרד נשארו לו בכיס",
-      "הכלב של המעון סירב לעזוב איתו",
-      "הוא שכח לחתום על מכתב ההתפטרות",
-      "לא הייתה לו דירה לחזור אליה"
+      "למשחקי בית\"ר ירושלים",
+      "לישיבות של מרכז הליכוד",
+      "לקבר אשתו, באזכרה השנתית",
+      "להרצאות באוניברסיטה העברית"
     ],
-    "answer": 3,
-    "explain": "הדירה הצנועה שבה גר בתל אביב, ברחוב רוזנבאום, הוחזרה לבעליה כשעבר למעון הרשמי. לפי דן מרידור נמצאה לו דירה שכורה בירושלים, ואת שכר הדירה שילם מהפנסיה.",
+    "answer": 2,
+    "explain": "אשתו עליזה מתה בנובמבר 1982. בשנים שאחרי ההתפטרות קיבל בבית רק בני משפחה וכמה חברים.",
     "difficulty": 2,
-    "funny": true,
+    "funny": false,
     "joke": false,
-    "source": "https://www.globes.co.il/news/article.aspx?did=1001279655"
+    "source": "https://www.begincenter.org.il/timeline/resignation-as-prime-minister/?lang=en"
   },
   {
     "id": "lead-037",
@@ -648,7 +648,7 @@
   {
     "id": "lead-039",
     "cat": "leaders",
-    "q": "איך כינה לוי אשכול ביידיש את ישראל, מדינה חזקה שצריכה להיראות חלשה ומאוימת?",
+    "q": "איך כינה לוי אשכול ביידיש את ישראל, מדינה חזקה שבכל זאת פגיעה?",
     "options": [
       "\"דוד דער גיבור\"",
       "\"שמשון דער שטארקער\"",
@@ -656,7 +656,7 @@
       "\"גוליית דער קליינער\""
     ],
     "answer": 2,
-    "explain": "הפירוש: \"שמשון המסכן\". כוח של שמשון, תדמית של נעבעך.",
+    "explain": "הפירוש: \"שמשון המסכן\". חזקה כמו שמשון, ועדיין חשופה ופגיעה.",
     "difficulty": 3,
     "funny": false,
     "joke": false,
@@ -745,7 +745,7 @@
     "difficulty": 3,
     "funny": false,
     "joke": false,
-    "source": "http://news.bbc.co.uk/2/hi/events/israel_at_50/profiles/81288.stm"
+    "source": "https://en.wikipedia.org/wiki/Golda_Meir"
   },
   {
     "id": "lead-045",
