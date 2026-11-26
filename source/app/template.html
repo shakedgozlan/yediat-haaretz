@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ידיעת הארץ: החידון של המילואים</title>
-<meta name="description" content="חידון ידיעת הארץ: היסטוריה, גיאוגרפיה, תנ״ך, מנהיגים, ציונות וידע עולם. 310 שאלות, עם קצת צחוקים בדרך.">
+<meta name="description" content="חידון ידיעת הארץ: 310 שאלות בהיסטוריה, גיאוגרפיה, תנ״ך, מנהיגים, ציונות וידע עולם.">
 <meta name="theme-color" content="#121E14">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -72,7 +72,7 @@ a { color: var(--bone); }
 .hex svg.icon { position: relative; }
 
 .topbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex: none; }
-.pill { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 18px; font-size: 14px; }
+.pill { white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 18px; font-size: 14px; }
 .dot { width: 8px; height: 8px; border-radius: 4px; background: var(--green); box-shadow: 0 0 8px var(--green); }
 
 /* home */
@@ -115,7 +115,7 @@ a { color: var(--bone); }
 .bar i { display: block; height: 100%; background: var(--bone); border-radius: 2px; }
 
 /* quiz */
-.counter { font: 400 clamp(22px, 3.2vh, 26px) var(--display); }
+.counter { font: 400 clamp(24px, 3.4vh, 28px) var(--display); direction: ltr; white-space: nowrap; }
 .track { position: relative; height: 44px; flex: none; }
 .track .dash { position: absolute; right: 6px; left: 42px; top: 21px; border-top: 2px dashed var(--line); }
 .track .fill { position: absolute; right: 6px; top: 20px; height: 4px; border-radius: 2px; background: var(--bone); transition: width .4s ease; }
@@ -189,6 +189,9 @@ a { color: var(--bone); }
 .toast.on { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+.restart { align-self: flex-start; background: none; border: 0; padding: 2px 4px; margin-top: calc(var(--gap) * -0.5); font-size: 14px; color: var(--sub); text-decoration: underline; flex: none; }
+.mode .chev { color: var(--sub); }
+.brand { font-size: 14px; color: var(--sub); }
 </style>
 </head>
 <body>
@@ -196,7 +199,7 @@ a { color: var(--bone); }
 <!-- HOME -->
 <section class="screen active" id="home">
   <div class="topbar">
-    <span class="pill glass"><span class="dot"></span>המערכת מוכנה</span>
+    <span class="brand">החידון של המילואים</span>
     <button class="hex" id="topicsBtn" aria-label="נושאים">
       <svg class="shape" aria-hidden="true" width="50" height="56" viewBox="0 0 52 58"><path d="M26 2 L49 15 L49 43 L26 56 L3 43 L3 15 Z" fill="rgba(14,24,16,0.9)" stroke="rgba(230,238,212,0.7)" stroke-width="1.4"/></svg>
       <svg class="icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>
@@ -206,24 +209,24 @@ a { color: var(--bone); }
   <div class="hero">
     <div class="here" aria-hidden="true"><span class="ring"></span><span class="core"></span><span class="leg"></span><span class="tag">אתה כאן. בערך.</span></div>
     <h1>ידיעת<br>הארץ</h1>
-    <p><span id="totalCount">310</span> שאלות. 6 נושאים. 0 תירוצים.</p>
+    <p><span class="allN">310</span> שאלות על הארץ, התנ״ך, המנהיגים והעולם.</p>
   </div>
 
-  <button class="cta" id="quickBtn">
-    <span><span class="t">יאללה, עולים על זה</span><span class="s">סבב של 10 שאלות, מהקל לקשה</span></span>
+  <button class="cta" id="allBtn">
+    <span><span class="t" id="mainT">כל <span class="allN">310</span> השאלות</span><span class="s" id="mainS">בסדר אקראי. אפשר לעצור באמצע.</span></span>
     <span class="go" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span>
   </button>
+  <button class="restart" id="restartAll" hidden>להתחיל מההתחלה</button>
 
-  <span class="label">או לבחור משחק אחר:</span>
+  <span class="label">אפשר גם:</span>
   <div class="route">
-    <div class="stop"><span class="pin"></span><button class="mode glass" id="funBtn"><span><span class="n">רק צחוקים</span><span class="d">רק השאלות המצחיקות</span></span><span class="c" id="funCount"></span></button></div>
-    <div class="stop"><span class="pin"></span><button class="mode glass" id="allBtn"><span><span class="n">כל ה-<span class="allN"></span> בבלגן</span><span class="d">כל השאלות, בסדר אקראי</span></span><span class="c allN"></span></button></div>
-    <div class="stop"><span class="pin"></span><button class="mode glass" id="hardBtn"><span><span class="n">רק קשות</span><span class="d">למי שבטוח בעצמו</span></span><span class="c" id="hardCount"></span></button></div>
-    <div class="stop"><span class="pin"></span><button class="mode glass" id="mistakesBtn"><span><span class="n">תיקון טעויות</span><span class="d" id="mistakesMeta">השאלות שטעית בהן</span></span><span class="c" id="mistakesCount"></span></button></div>
+    <div class="stop"><span class="pin"></span><button class="mode glass" id="funBtn"><span><span class="n">רק המצחיקות</span><span class="d" data-base="השאלות עם החיוך">השאלות עם החיוך</span></span><span class="c" id="funCount"></span></button></div>
+    <div class="stop"><span class="pin"></span><button class="mode glass" id="hardBtn"><span><span class="n">רק הקשות</span><span class="d" data-base="למי שבא להתאמץ">למי שבא להתאמץ</span></span><span class="c" id="hardCount"></span></button></div>
+    <div class="stop"><span class="pin"></span><button class="mode glass" id="levelBtn"><span><span class="n">לפי רמה</span><span class="d">קלות, בינוניות או קשות</span></span><svg class="chev" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button></div>
   </div>
 
   <div class="stats glass">
-    <div class="row"><span id="statsA">עוד לא התחלת</span><span id="statsB" style="color: var(--sub)"></span></div>
+    <div class="row"><span id="statsA"></span><span id="statsB" style="color: var(--sub)"></span></div>
     <div class="bar"><i id="statsBar" style="width: 0%"></i></div>
   </div>
 </section>
@@ -231,7 +234,7 @@ a { color: var(--bone); }
 <!-- QUIZ -->
 <section class="screen" id="quiz" aria-live="polite">
   <div class="topbar">
-    <button class="hex" id="quitBtn" aria-label="יציאה לתפריט">
+    <button class="hex" id="quitBtn" aria-label="לתפריט. ההתקדמות נשמרת">
       <svg class="shape" aria-hidden="true" width="50" height="56" viewBox="0 0 52 58"><path d="M26 2 L49 15 L49 43 L26 56 L3 43 L3 15 Z" fill="rgba(14,24,16,0.9)" stroke="rgba(230,238,212,0.7)" stroke-width="1.4"/></svg>
       <svg class="icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
     </button>
@@ -241,7 +244,6 @@ a { color: var(--bone); }
 
   <div class="track" aria-hidden="true">
     <span class="dash"></span><span class="fill" id="fill"></span><span class="start"></span>
-    <span id="ticks"></span>
     <span class="home glass"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></span>
     <span class="me" id="me"><i></i></span>
   </div>
@@ -255,9 +257,9 @@ a { color: var(--bone); }
 
   <div class="feedback glass" id="feedback" hidden>
     <h3 id="fbTitle"></h3>
-    <p><span id="fbText"></span> <a id="fbSrc" target="_blank" rel="noopener">למקור</a></p>
+    <p><span id="fbText"></span> <a id="fbSrc" target="_blank" rel="noopener">מקור</a></p>
   </div>
-  <button class="next" id="nextBtn" hidden><span id="nextLabel">לשאלה הבאה</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+  <button class="next" id="nextBtn" hidden><span id="nextLabel">הבאה</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
 </section>
 
 <!-- RESULTS -->
@@ -267,27 +269,27 @@ a { color: var(--bone); }
   <p class="sub" id="scoreSub"></p>
   <ul class="breakdown glass" id="breakdown"></ul>
   <button class="cta" id="againBtn" style="margin-top: auto">
-    <span><span class="t">עוד סבב</span><span class="s">אותו סוג משחק, שאלות אחרות</span></span>
+    <span><span class="t">עוד פעם</span><span class="s">אותו משחק, בסדר אחר</span></span>
     <span class="go" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></span>
   </button>
   <div class="row2">
-    <button class="ghost glass" id="shareBtn">לשתף בקבוצה</button>
+    <button class="ghost glass" id="shareBtn">לשתף</button>
     <button class="ghost glass" id="homeBtn">לתפריט</button>
   </div>
 </section>
 
-<!-- TOPICS SHEET -->
+<!-- SHEET (topics or levels) -->
 <div class="sheet-bg" id="sheetBg" hidden></div>
 <div class="sheet glass" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
   <div class="sheet-head">
-    <h2 id="sheetTitle">נושאים</h2>
+    <h2 id="sheetTitle"></h2>
     <button class="close glass" id="sheetClose" aria-label="סגירה"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
   </div>
-  <div id="topicList"></div>
-  <div class="sheet-foot">
+  <div id="sheetList"></div>
+  <div class="sheet-foot" id="sheetFoot">
     <button class="link" id="installBtn" hidden>להתקין כאפליקציה</button>
     <span id="iosTip" hidden>להתקנה: שיתוף בספארי, ואז ״הוספה למסך הבית״</span>
-    <button class="link" id="resetBtn">איפוס ההתקדמות</button>
+    <button class="link" id="resetBtn">לאפס את ההתקדמות</button>
   </div>
 </div>
 
@@ -295,18 +297,23 @@ a { color: var(--bone); }
 
 <script>
 const QUESTIONS = /*__QUESTIONS__*/[];
+const BY_ID = Object.fromEntries(QUESTIONS.map(q => [q.id, q]));
 
 const CATS = { history: "היסטוריה", geography: "גיאוגרפיה", tanakh: "תנ״ך", leaders: "נשיאים וראשי ממשלה", zionism: "ציונות", world: "העולם" };
+const LEVELS = { 1: "קלות", 2: "בינוניות", 3: "קשות" };
 const DIFF = { 1: "קלה", 2: "בינונית", 3: "קשה" };
-const RIGHT = ["בול.", "נכון מאוד.", "יפה, צדקת.", "תותח.", "בדיוק.", "ידעת. כל הכבוד.", "נכון. מגיע לך חמשוש.", "יפה. הרס״ר מרוצה."];
-const WRONG = ["טעית. 20 שכיבות סמיכה.", "לא בדיוק.", "פספוס.", "קרוב, אבל לא.", "לא הפעם.", "טעית. קורה גם לטובים.", "לא. אבל עכשיו אתה יודע."];
+const RIGHT = ["נכון.", "נכון מאוד.", "בדיוק.", "יפה.", "צדקת."];
+const WRONG = ["לא נכון.", "לא הפעם.", "טעות.", "פספוס."];
 
-// ---------- progress saved on this phone ----------
+// ---------- progress, saved on this phone ----------
 const STORE_KEY = "yediat-haaretz-v1";
-function loadStore() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || { q: {}, rounds: 0 }; } catch (e) { return { q: {}, rounds: 0 }; } }
+function loadStore() {
+  try { const s = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; s.q = s.q || {}; s.saved = s.saved || {}; return s; }
+  catch (e) { return { q: {}, saved: {} }; }
+}
 function saveStore() { try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) {} }
 let store = loadStore();
-const stat = (id) => store.q[id] || { seen: 0, right: 0, lastWrong: false };
+const stat = (id) => store.q[id] || { seen: 0, right: 0 };
 
 // ---------- helpers ----------
 const $ = (id) => document.getElementById(id);
@@ -314,79 +321,75 @@ function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { co
 const pick = (a) => a[Math.floor(Math.random() * a.length)];
 function show(id) { document.querySelectorAll(".screen").forEach(s => s.classList.toggle("active", s.id === id)); }
 function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("on"), 2400); }
-const freshFirst = (pool) => shuffle(pool).sort((a, b) => stat(a.id).seen - stat(b.id).seen);
-const byDiff = (a, b) => (a.difficulty || 2) - (b.difficulty || 2);
-const pools = {
-  fun: () => QUESTIONS.filter(q => q.funny || q.joke),
-  hard: () => QUESTIONS.filter(q => q.difficulty === 3 && !q.joke),
-  mistakes: () => QUESTIONS.filter(q => stat(q.id).lastWrong)
+
+// a "mode" is the set of questions you play through, start to finish
+const MODES = {
+  all:  { pool: () => QUESTIONS },
+  fun:  { pool: () => QUESTIONS.filter(q => q.funny || q.joke) },
+  hard: { pool: () => QUESTIONS.filter(q => q.difficulty === 3 && !q.joke) },
 };
-
-// ---------- rounds ----------
-let round = null, lastMode = null;
-
-function buildRound(mode) {
-  let chosen;
-  if (mode.type === "quick") {
-    const by = d => freshFirst(QUESTIONS.filter(q => (q.difficulty || 2) === d));
-    chosen = [...by(1).slice(0, 3), ...by(2).slice(0, 4), ...by(3).slice(0, 3)].sort(byDiff);
-  } else if (mode.type === "all") {
-    chosen = shuffle(QUESTIONS);
-  } else if (mode.type === "cat") {
-    chosen = freshFirst(QUESTIONS.filter(q => q.cat === mode.cat)).slice(0, 10).sort(byDiff);
-  } else {
-    chosen = freshFirst(pools[mode.type]()).slice(0, 10).sort(byDiff);
-  }
-  return chosen.map(q => ({ q, order: shuffle([0, 1, 2, 3].slice(0, q.options.length)), picked: null }));
+function poolFor(key) {
+  if (MODES[key]) return MODES[key].pool();
+  if (key.startsWith("lvl")) { const d = Number(key.slice(3)); return QUESTIONS.filter(q => (q.difficulty || 2) === d && !q.joke); }
+  if (key.startsWith("cat:")) { const c = key.slice(4); return QUESTIONS.filter(q => q.cat === c); }
+  return [];
+}
+// a saved game still in progress for this mode, if any
+function savedGame(key) {
+  const s = store.saved[key];
+  if (!s) return null;
+  const ids = s.ids.filter(id => BY_ID[id]);
+  if (!ids.length || s.i >= ids.length || s.i === 0) return null;
+  return { ...s, ids };
 }
 
-function startRound(mode) {
+// ---------- playing ----------
+let game = null;
+
+function start(key, fresh) {
   closeSheet();
-  const items = buildRound(mode);
-  if (!items.length) { toast(mode.type === "mistakes" ? "אין טעויות לתקן. יפה לך." : "אין פה שאלות עדיין."); return; }
-  lastMode = mode;
-  round = { mode, items, i: 0, score: 0, scored: 0 };
-  buildTicks();
+  const saved = fresh ? null : savedGame(key);
+  if (saved) game = { key, ids: saved.ids, i: saved.i, score: saved.score, scored: saved.scored, picks: saved.picks || {} };
+  else {
+    const ids = shuffle(poolFor(key)).map(q => q.id);
+    if (!ids.length) { toast("אין כאן שאלות עדיין."); return; }
+    game = { key, ids, i: 0, score: 0, scored: 0, picks: {} };
+  }
+  game.answered = false;
   show("quiz");
   renderQuestion();
 }
 
-function buildTicks() {
-  const n = round.items.length, box = $("ticks");
-  box.innerHTML = "";
-  if (n > 12) return;
-  for (let k = 1; k < n; k++) {
-    const t = document.createElement("span");
-    t.className = "tick"; t.dataset.k = k;
-    t.style.right = "calc(6px + (100% - 48px) * " + (k / n) + ")";
-    box.appendChild(t);
-  }
+function persist() {
+  store.saved[game.key] = { ids: game.ids, i: game.i, score: game.score, scored: game.scored, picks: game.picks };
+  saveStore();
 }
 
-function setProgress(doneCount) {
-  const n = round.items.length, f = doneCount / n;
+function setProgress(done) {
+  const n = game.ids.length, f = done / n;
   $("fill").style.width = "calc((100% - 48px) * " + f + ")";
   $("me").style.right = "calc(6px + (100% - 48px) * " + f + ")";
-  document.querySelectorAll("#ticks .tick").forEach(t => t.classList.toggle("done", Number(t.dataset.k) <= doneCount));
-  const left = n - doneCount;
-  $("caption").textContent = left <= 0 ? "הגעת הביתה." : left === 1 ? "שאלה אחרונה ואתה בבית" : "עוד " + left + " שאלות הביתה";
+  const left = n - done;
+  $("caption").textContent = left <= 0 ? "סיימת." : left === 1 ? "נשארה שאלה אחת" : "נשארו " + left + " שאלות";
 }
 
 function renderQuestion() {
-  const it = round.items[round.i], q = it.q, n = round.items.length;
-  $("counter").textContent = "שאלה " + (round.i + 1) + " מתוך " + n;
-  $("scorePill").textContent = round.score + " נכונות";
-  setProgress(round.i);
+  const q = BY_ID[game.ids[game.i]], n = game.ids.length;
+  game.answered = false;
+  game.order = shuffle([0, 1, 2, 3].slice(0, q.options.length));
+  $("counter").textContent = (game.i + 1) + "/" + n;
+  $("scorePill").textContent = game.score + " נכונות";
+  setProgress(game.i);
 
   const chips = $("chips"); chips.innerHTML = "";
   const chip = (txt, cls) => { const s = document.createElement("span"); s.className = "chip" + (cls ? " " + cls : ""); s.textContent = txt; chips.appendChild(s); };
   chip(CATS[q.cat] || q.cat);
-  if (q.joke) chip("בדיחה, לא נספר בניקוד", "red");
+  if (q.joke) chip("בדיחה, לא נספרת", "red");
   else { chip(DIFF[q.difficulty] || "בינונית"); if (q.funny) chip("עם חיוך", "red"); }
 
   $("qtext").textContent = q.q;
   const box = $("options"); box.innerHTML = "";
-  it.order.forEach(idx => {
+  game.order.forEach(idx => {
     const b = document.createElement("button");
     b.className = "opt glass"; b.dataset.idx = idx;
     const span = document.createElement("span"); span.textContent = q.options[idx];
@@ -402,10 +405,9 @@ const CHECK = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24
 const CROSS = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
 
 function answer(idx) {
-  const it = round.items[round.i];
-  if (it.picked !== null) return;
-  it.picked = idx;
-  const q = it.q, correct = idx === q.answer;
+  if (game.answered) return;
+  game.answered = true;
+  const q = BY_ID[game.ids[game.i]], correct = idx === q.answer;
 
   document.querySelectorAll("#options .opt").forEach(b => {
     const bi = Number(b.dataset.idx);
@@ -417,55 +419,64 @@ function answer(idx) {
 
   const s = stat(q.id); s.seen++;
   const h = $("fbTitle");
-  if (q.joke) { h.className = "lol"; h.textContent = correct ? "הבנת את הבדיחה." : "הפאנץ׳ מסומן."; }
+  if (q.joke) { h.className = "lol"; h.textContent = correct ? "בדיוק הבדיחה." : "הבדיחה מסומנת למעלה."; }
   else {
-    round.scored++; if (correct) round.score++;
-    if (correct) s.right++;
-    s.lastWrong = !correct;
+    game.scored++; if (correct) { game.score++; s.right++; }
     h.className = correct ? "good" : "bad";
     h.textContent = pick(correct ? RIGHT : WRONG);
   }
-  store.q[q.id] = s; saveStore();
+  store.q[q.id] = s;
+  game.picks[q.id] = idx;
+  game.i++;            // saved as "next question", so leaving now keeps this answer
+  persist();
 
-  $("scorePill").textContent = round.score + " נכונות";
+  $("scorePill").textContent = game.score + " נכונות";
   $("fbText").textContent = q.explain || "";
   const src = $("fbSrc");
   if (q.source) { src.href = q.source; src.hidden = false; } else src.hidden = true;
   const fb = $("feedback"); fb.hidden = false; fb.scrollTop = 0;
   fb.classList.remove("show"); void fb.offsetWidth; fb.classList.add("show");
 
-  const last = round.i === round.items.length - 1;
-  $("nextLabel").textContent = last ? "לתוצאות" : "לשאלה הבאה";
+  const last = game.i >= game.ids.length;
+  $("nextLabel").textContent = last ? "לסיכום" : "הבאה";
   $("nextBtn").hidden = false;
-  setProgress(round.i + 1);
+  setProgress(game.i);
   $("nextBtn").focus({ preventScroll: true });
 }
 
 function next() {
-  if (round.i < round.items.length - 1) { round.i++; renderQuestion(); }
+  if (game.i < game.ids.length) renderQuestion();
   else finish();
+}
+
+function quit() {
+  if (game && game.i > 0 && game.i < game.ids.length) toast("נשמר. אפשר להמשיך מאותה שאלה.");
+  renderHome(); show("home");
 }
 
 // ---------- results ----------
 function verdictFor(p) {
-  if (p === 1) return "מושלם. מגיעה לך יציאה הביתה.";
-  if (p >= .8) return "רמה של קצין חינוך.";
-  if (p >= .6) return "יפה. עוד כמה סבבים ואתה מדריך טיולים.";
-  if (p >= .4) return "סביר. יש מה לשפר.";
-  if (p > 0) return "נגיד שזה נשאר בינינו.";
-  return "אפס. לפחות היית עקבי.";
+  if (p === 1) return "מושלם.";
+  if (p >= .8) return "מצוין.";
+  if (p >= .6) return "יפה מאוד.";
+  if (p >= .4) return "לא רע בכלל.";
+  if (p > 0) return "יש עוד מה ללמוד. בשביל זה יש חידון.";
+  return "אפס. גם זה הישג, מסוג מסוים.";
 }
 
 function finish() {
+  delete store.saved[game.key];
   store.rounds = (store.rounds || 0) + 1; saveStore();
-  const { score, scored, items } = round;
+  const { score, scored } = game;
   $("scoreBig").innerHTML = score + "<small>/" + scored + "</small>";
-  $("verdict").textContent = scored ? verdictFor(score / scored) : "רק בדיחות הפעם. אין ניקוד, יש מצב רוח.";
-  const answered = items.filter(x => x.picked !== null);
-  const jokes = answered.filter(x => x.q.joke).length;
+  $("verdict").textContent = scored ? verdictFor(score / scored) : "רק בדיחות הפעם, בלי ניקוד.";
+  const jokes = Object.keys(game.picks).filter(id => BY_ID[id] && BY_ID[id].joke).length;
   $("scoreSub").textContent = jokes ? "ועוד " + jokes + " בדיחות שלא נספרו." : "";
   const per = {};
-  answered.forEach(x => { if (x.q.joke) return; const c = x.q.cat; per[c] = per[c] || [0, 0]; per[c][1]++; if (x.picked === x.q.answer) per[c][0]++; });
+  Object.entries(game.picks).forEach(([id, p]) => {
+    const q = BY_ID[id]; if (!q || q.joke) return;
+    per[q.cat] = per[q.cat] || [0, 0]; per[q.cat][1]++; if (p === q.answer) per[q.cat][0]++;
+  });
   const ul = $("breakdown"); ul.innerHTML = "";
   Object.keys(per).forEach(c => {
     const li = document.createElement("li");
@@ -478,74 +489,88 @@ function finish() {
 }
 
 async function share() {
-  const text = "עשיתי " + round.score + " מתוך " + round.scored + " בחידון ידיעת הארץ של המילואים. בוא נראה אותך:";
+  const text = "עניתי נכון על " + game.score + " מתוך " + game.scored + " בחידון ידיעת הארץ. נסה בעצמך:";
   const url = location.href.split("#")[0];
   try { if (navigator.share) { await navigator.share({ title: "ידיעת הארץ", text, url }); return; } } catch (e) { return; }
-  try { await navigator.clipboard.writeText(text + " " + url); toast("הועתק. אפשר להדביק בקבוצה."); } catch (e) { toast("לא הצלחתי להעתיק."); }
+  try { await navigator.clipboard.writeText(text + " " + url); toast("הקישור הועתק."); } catch (e) { toast("לא הצלחתי להעתיק."); }
 }
 
-// quitting a long round in the middle still shows what you did so far
-function quit() {
-  if (round && round.items.some(x => x.picked !== null) && round.mode.type === "all") {
-    round.items = round.items.filter(x => x.picked !== null); finish();
-  } else { renderHome(); show("home"); }
-}
+// ---------- home ----------
+const accuracy = (qs) => {
+  const seen = qs.filter(q => !q.joke && stat(q.id).seen);
+  const pct = seen.length ? Math.round(seen.reduce((s, q) => s + stat(q.id).right / stat(q.id).seen, 0) / seen.length * 100) : 0;
+  return { seen: seen.length, pct };
+};
+const resumeText = (key) => { const s = savedGame(key); return s ? "נעצרת בשאלה " + (s.i + 1) + " מתוך " + s.ids.length : null; };
 
-// ---------- home and topics ----------
 function renderHome() {
   const total = QUESTIONS.length;
-  $("totalCount").textContent = total;
   document.querySelectorAll(".allN").forEach(e => e.textContent = total);
-  $("funCount").textContent = pools.fun().length;
-  $("hardCount").textContent = pools.hard().length;
-  const m = pools.mistakes().length;
-  $("mistakesCount").textContent = m || "";
-  $("mistakesMeta").textContent = m ? "השאלות שטעית בהן" : "אין כרגע. יפה לך.";
-  $("mistakesBtn").disabled = !m;
-
-  const seen = QUESTIONS.filter(q => !q.joke && stat(q.id).seen);
-  const acc = seen.length ? Math.round(seen.reduce((s, q) => s + stat(q.id).right / stat(q.id).seen, 0) / seen.length * 100) : 0;
-  $("statsA").textContent = seen.length ? "ענית על " + seen.length + " מתוך " + total : "עוד לא התחלת. זה הזמן.";
-  $("statsB").textContent = seen.length ? "דיוק " + acc + "%" : "";
-  $("statsBar").style.width = Math.round(seen.length / total * 100) + "%";
-}
-
-function renderTopics() {
-  const list = $("topicList"); list.innerHTML = "";
-  Object.keys(CATS).forEach(c => {
-    const qs = QUESTIONS.filter(q => q.cat === c);
-    if (!qs.length) return;
-    const real = qs.filter(q => !q.joke), seen = real.filter(q => stat(q.id).seen);
-    const pct = seen.length ? Math.round(seen.reduce((s, q) => s + stat(q.id).right / stat(q.id).seen, 0) / seen.length * 100) : 0;
-    const b = document.createElement("button");
-    b.className = "topic";
-    b.innerHTML = '<span><span class="n"></span><span class="d"></span></span><span class="c"></span>';
-    b.querySelector(".n").textContent = CATS[c];
-    b.querySelector(".d").textContent = seen.length ? "ענית על " + seen.length + ", " + pct + "% הצלחה" : "עוד לא התחלת";
-    b.querySelector(".c").textContent = qs.length;
-    b.addEventListener("click", () => startRound({ type: "cat", cat: c }));
-    list.appendChild(b);
+  const all = savedGame("all");
+  $("mainT").innerHTML = all ? "להמשיך" : 'כל <span class="allN">' + total + "</span> השאלות";
+  $("mainS").textContent = all ? "משאלה " + (all.i + 1) + " מתוך " + all.ids.length : "בסדר אקראי. אפשר לעצור באמצע.";
+  $("restartAll").hidden = !all;
+  $("funCount").textContent = MODES.fun.pool().length;
+  $("hardCount").textContent = MODES.hard.pool().length;
+  [["funBtn", "fun"], ["hardBtn", "hard"]].forEach(([btn, key]) => {
+    const d = $(btn).querySelector(".d"); d.textContent = resumeText(key) || d.dataset.base;
   });
+  const a = accuracy(QUESTIONS);
+  $("statsA").textContent = a.seen ? "ענית על " + a.seen + " מתוך " + total : "עוד לא ענית על אף שאלה";
+  $("statsB").textContent = a.seen ? a.pct + "% נכונות" : "";
+  $("statsBar").style.width = Math.round(a.seen / total * 100) + "%";
 }
-function openSheet() { renderTopics(); $("sheetBg").hidden = false; $("sheet").hidden = false; $("sheetClose").focus(); }
+
+// ---------- sheet: topics or levels ----------
+function sheetRow(name, desc, count, onClick) {
+  const b = document.createElement("button");
+  b.className = "topic";
+  b.innerHTML = '<span><span class="n"></span><span class="d"></span></span><span class="c"></span>';
+  b.querySelector(".n").textContent = name;
+  b.querySelector(".d").textContent = desc;
+  b.querySelector(".c").textContent = count;
+  b.addEventListener("click", onClick);
+  return b;
+}
+function openSheet(kind) {
+  const list = $("sheetList"); list.innerHTML = "";
+  if (kind === "topics") {
+    $("sheetTitle").textContent = "נושאים";
+    Object.keys(CATS).forEach(c => {
+      const key = "cat:" + c, qs = poolFor(key); if (!qs.length) return;
+      const a = accuracy(qs);
+      const desc = resumeText(key) || (a.seen ? "ענית על " + a.seen + ", " + a.pct + "% נכונות" : "עוד לא התחלת");
+      list.appendChild(sheetRow(CATS[c], desc, qs.length, () => start(key)));
+    });
+  } else {
+    $("sheetTitle").textContent = "לפי רמה";
+    [1, 2, 3].forEach(d => {
+      const key = "lvl" + d, qs = poolFor(key);
+      const a = accuracy(qs);
+      list.appendChild(sheetRow("שאלות " + LEVELS[d], resumeText(key) || (a.seen ? "ענית על " + a.seen + ", " + a.pct + "% נכונות" : "עוד לא התחלת"), qs.length, () => start(key)));
+    });
+  }
+  $("sheetFoot").hidden = kind !== "topics";
+  $("sheetBg").hidden = false; $("sheet").hidden = false; $("sheetClose").focus();
+}
 function closeSheet() { $("sheetBg").hidden = true; $("sheet").hidden = true; }
 
-$("quickBtn").onclick = () => startRound({ type: "quick" });
-$("funBtn").onclick = () => startRound({ type: "fun" });
-$("allBtn").onclick = () => startRound({ type: "all" });
-$("hardBtn").onclick = () => startRound({ type: "hard" });
-$("mistakesBtn").onclick = () => startRound({ type: "mistakes" });
-$("topicsBtn").onclick = openSheet;
+$("allBtn").onclick = () => start("all");
+$("restartAll").onclick = () => start("all", true);
+$("funBtn").onclick = () => start("fun");
+$("hardBtn").onclick = () => start("hard");
+$("levelBtn").onclick = () => openSheet("levels");
+$("topicsBtn").onclick = () => openSheet("topics");
 $("sheetClose").onclick = closeSheet;
 $("sheetBg").onclick = closeSheet;
 document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("sheet").hidden) closeSheet(); });
 $("nextBtn").onclick = next;
 $("quitBtn").onclick = quit;
 $("homeBtn").onclick = () => { renderHome(); show("home"); };
-$("againBtn").onclick = () => startRound(lastMode || { type: "quick" });
+$("againBtn").onclick = () => start(game ? game.key : "all", true);
 $("shareBtn").onclick = share;
 $("resetBtn").onclick = () => {
-  if (confirm("למחוק את כל ההתקדמות בטלפון הזה?")) { store = { q: {}, rounds: 0 }; saveStore(); renderHome(); renderTopics(); toast("ההתקדמות אופסה."); }
+  if (confirm("למחוק את כל ההתקדמות בטלפון הזה?")) { store = { q: {}, saved: {} }; saveStore(); renderHome(); openSheet("topics"); toast("ההתקדמות אופסה."); }
 };
 
 // install as an app
@@ -553,7 +578,7 @@ $("resetBtn").onclick = () => {
   const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
   if (standalone) return;
   if (/iphone|ipad|ipod/i.test(navigator.userAgent)) $("iosTip").hidden = false;
-  window.addEventListener("beforeinstallprompt", e => {
+  addEventListener("beforeinstallprompt", e => {
     e.preventDefault();
     $("installBtn").hidden = false;
     $("installBtn").onclick = () => { e.prompt(); $("installBtn").hidden = true; };
